@@ -36,6 +36,17 @@
   text-decoration: none;
   margin: 0 0.5rem;
   font-weight: 500;
+  transition: 0.5s ease-in-out;
+}
+
+.clipper-cut-emoji:hover {
+  transform: translateX(50px) rotate(360deg);
+  cursor: pointer;
+}
+
+.main-nav a:hover {
+  text-decoration: underline 3px var(--primary-color);
+  transition: 0.5s ease-in-out;
 }
 
 .sign-in-button {
@@ -46,6 +57,11 @@
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.95rem;
+}
+
+.sign-in-button:hover {
+  background-color: #0f5e3d;
+  transition: 0.5s ease-in-out;
 }
 
 /* Search styles */
