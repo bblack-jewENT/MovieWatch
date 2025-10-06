@@ -5,7 +5,9 @@ function NavBar({ onSearch }) {
   return (
     <header className="navbar">
       <div className="navbar-left">
-        <h1 className="brand">🎬 Movie Watch</h1>
+        <h1 className="brand">
+          <span className="clipper-cut-emoji">🎬</span> Movie Watch
+        </h1>
       </div>
 
       <div className="navbar-center" />
