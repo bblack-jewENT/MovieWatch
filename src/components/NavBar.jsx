@@ -1,17 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
+import SearchBar from "./SearchBar";
 
-function NavBar() {
+function NavBar({ onSearch }) {
   return (
-    <>
-      <h1>Movie Watch</h1>
-      <nav>
-        <ul>
-          <li>Home</li>
-          <li>Movies</li>
-          <li>Coming</li>
-        </ul>
-      </nav>
-    </>
+    <header className="navbar">
+      <div className="navbar-left">
+        <h1 className="brand">🎬 Movie Watch</h1>
+      </div>
+
+      <div className="navbar-center" />
+
+      <div className="navbar-right">
+        <nav className="main-nav">
+          <a href="#">Home</a>
+          <a href="#">Movies</a>
+          <a href="#">Coming</a>
+        </nav>
+
+        <SearchBar onSearch={onSearch} />
+
+        <button className="sign-in-button">Sign in</button>
+      </div>
+    </header>
   );
 }
 
