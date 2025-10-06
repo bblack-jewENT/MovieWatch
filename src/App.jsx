@@ -1,12 +1,15 @@
 import "./App.css";
 import NavBar from "./components/NavBar";
-import SearchBar from "./components/SearchBar";
 
 function App() {
+  const handleSearch = (term) => {
+    console.log("Searching for:", term);
+    // TODO: wire to API or global state
+  };
+
   return (
     <>
-      <NavBar />
-      <SearchBar onSearch={(term) => console.log("Searching for:", term)} />
+      <NavBar onSearch={handleSearch} />
     </>
   );
 }
