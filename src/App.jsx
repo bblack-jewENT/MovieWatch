@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";
@@ -10,17 +10,45 @@ function App() {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [rawResponse, setRawResponse] = useState(null);
+
+  // Fetch default movies on initial load
+  useEffect(() => {
+    const fetchDefaultMovies = async () => {
+      setLoading(true);
+      setError(null);
+      setSelectedMovie(null);
+      setRawResponse(null);
+      try {
+        const results = await searchMovies("Avengers");
+        setMovies(results);
+        setRawResponse(results);
+      } catch (err) {
+        setError(err.message);
+        setMovies([]);
+        setRawResponse(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchDefaultMovies();
+  }, []);
 
   const handleSearch = async (term) => {
     setLoading(true);
     setError(null);
     setSelectedMovie(null);
+    setRawResponse(null);
     try {
       const results = await searchMovies(term);
       setMovies(results);
+      setRawResponse(results);
+      console.log("Search term:", term);
+      console.log("API results:", results);
     } catch (err) {
       setError(err.message);
       setMovies([]);
+      setRawResponse(null);
     } finally {
       setLoading(false);
     }
@@ -52,7 +80,14 @@ function App() {
         {selectedMovie ? (
           <MovieDetails movie={selectedMovie} onBack={handleBack} />
         ) : (
-          <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
+          <>
+            <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
+            {(!movies || movies.length === 0) && rawResponse && (
+              <pre className="api-debug">
+                {JSON.stringify(rawResponse, null, 2)}
+              </pre>
+            )}
+          </>
         )}
       </main>
     </>
