@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";
+import Footer from "./components/Footer";
 import { searchMovies, getMovieDetails } from "./services/movieService";
 
 function App() {
@@ -90,6 +91,7 @@ function App() {
           </>
         )}
       </main>
+      <Footer />
     </>
   );
 }
