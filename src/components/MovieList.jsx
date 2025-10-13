@@ -11,10 +11,16 @@ function MovieList({ movies, onSelectMovie }) {
   }
 
   return (
-    <div className="movie-list">
-      {movies.map((movie) => (
-        <MovieItem key={movie.imdbID} movie={movie} onSelect={onSelectMovie} />
-      ))}
+    <div className="movie-list-wrapper">
+      <div className="movie-list">
+        {movies.map((movie) => (
+          <MovieItem
+            key={movie.imdbID}
+            movie={movie}
+            onSelect={onSelectMovie}
+          />
+        ))}
+      </div>
     </div>
   );
 }
