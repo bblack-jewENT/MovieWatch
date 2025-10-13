@@ -4,7 +4,11 @@ import NavBar from "./components/NavBar";
 import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";
 import Footer from "./components/Footer";
-import { searchMovies, getMovieDetails } from "./services/movieService";
+import {
+  searchMovies,
+  getMovieDetails,
+  getPopularMovies,
+} from "./services/movieService";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -21,7 +25,7 @@ function App() {
       setSelectedMovie(null);
       setRawResponse(null);
       try {
-        const results = await searchMovies("Marvel");
+        const results = await getPopularMovies();
         setMovies(results);
         setRawResponse(results);
       } catch (err) {
