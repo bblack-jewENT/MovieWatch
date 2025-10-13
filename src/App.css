@@ -9,13 +9,13 @@
 }
 
 .footer-content {
-  max-width: 900px;
-  margin: 25px auto;
+  width: 100%;
+  margin: 25px 45px;
   text-align: center;
   display: flex;
   /* flex-direction: column; */
   align-items: center;
-  gap: 3rem;
+  gap: 20rem;
 }
 
 .footer .brand {
@@ -50,10 +50,16 @@
   margin: 0.5rem 0 0 0;
 }
 
-.separator-line {
-  border-top: 1px solid #ccc; /* 1px solid gray line at the top */
-  margin-top: 40px;
-  margin-bottom: 20px;
+.separator-line-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 20px 0 20px 0;
+  width: 103.7%;
+}
+
+.separator-line-nav {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 35px;
+  width: 103.7%;
 }
 
 :root {
@@ -68,8 +74,8 @@
   display: flex;
   align-items: center;
   gap: 23rem;
-  padding: 0.75rem 1rem;
-  margin-bottom: 2rem;
+  padding: 2rem 1rem;
+  margin-bottom: 0.5rem;
   color: var(--text-color);
 }
 
@@ -157,13 +163,7 @@
   opacity: 1;
 }
 
-.search-wrapper.closed .search-input {
-  width: 0;
-  padding-left: 0;
-  padding-right: 0;
-  opacity: 0;
-  border: none;
-}
+/* Removed closed state styles since input is always open */
 
 .search-toggle {
   display: inline-flex;
@@ -368,13 +368,7 @@
   }
 }
 
-.navbar-right.search-open .main-nav,
-.navbar-right.search-open .sign-in-button {
-  opacity: 0.3;
-  pointer-events: none;
-  transform: scale(0.95);
-  transition: opacity 0.2s, transform 0.2s;
-}
+/* Removed search-open styles since search is always open */
 
 /* Sign In Modal */
 .modal-overlay {
