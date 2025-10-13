@@ -430,7 +430,7 @@
 .close-button {
   background: transparent;
   color: var(--text-color);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(58, 120, 138, 0.2);
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
@@ -438,5 +438,6 @@
 }
 
 .close-button:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(179, 11, 11, 0.1);
+  border: 1px solid tomato;
 }
