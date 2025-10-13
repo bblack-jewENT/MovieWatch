@@ -24,6 +24,7 @@ function SignInModal({ isOpen, onClose }) {
             <input
               type="email"
               id="email"
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -34,6 +35,7 @@ function SignInModal({ isOpen, onClose }) {
             <input
               type="password"
               id="password"
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
