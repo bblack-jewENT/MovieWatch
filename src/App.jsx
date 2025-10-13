@@ -91,6 +91,7 @@ function App() {
           </>
         )}
       </main>
+      <div class="separator-line"></div>
       <Footer />
     </>
   );
