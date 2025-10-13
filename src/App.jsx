@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";
+import MoviesPage from "./components/MoviesPage";
 import Footer from "./components/Footer";
 import {
   searchMovies,
@@ -16,6 +17,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [rawResponse, setRawResponse] = useState(null);
+  const [currentPage, setCurrentPage] = useState("home");
 
   // Fetch default movies on initial load
   useEffect(() => {
@@ -76,26 +78,43 @@ function App() {
     setSelectedMovie(null);
   };
 
+  const handleNavigate = (page) => {
+    setCurrentPage(page);
+    setSelectedMovie(null);
+    // Reset to home movies when navigating to home
+    if (page === "home") {
+      // The home page already has its own movie loading logic
+    }
+  };
+
   return (
     <>
-      <NavBar onSearch={handleSearch} />
-      <main className="main-content">
-        {loading && <div className="loading">Loading...</div>}
-        {error && <div className="error">{error}</div>}
-        {selectedMovie ? (
-          <MovieDetails movie={selectedMovie} onBack={handleBack} />
-        ) : (
-          <>
-            <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
-            {(!movies || movies.length === 0) && rawResponse && (
-              <pre className="api-debug">
-                {JSON.stringify(rawResponse, null, 2)}
-              </pre>
+      <NavBar onSearch={handleSearch} onNavigate={handleNavigate} />
+      {currentPage === "home" && (
+        <>
+          <div className="separator-line-nav"></div>
+          <main className="main-content">
+            {loading && <div className="loading">Loading...</div>}
+            {error && <div className="error">{error}</div>}
+            {selectedMovie ? (
+              <MovieDetails movie={selectedMovie} onBack={handleBack} />
+            ) : (
+              <>
+                <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
+                {(!movies || movies.length === 0) && rawResponse && (
+                  <pre className="api-debug">
+                    {JSON.stringify(rawResponse, null, 2)}
+                  </pre>
+                )}
+              </>
             )}
-          </>
-        )}
-      </main>
-      <div class="separator-line"></div>
+          </main>
+        </>
+      )}
+      {currentPage === "movies" && (
+        <MoviesPage onSelectMovie={handleSelectMovie} />
+      )}
+      <div className="separator-line-footer"></div>
       <Footer />
     </>
   );
