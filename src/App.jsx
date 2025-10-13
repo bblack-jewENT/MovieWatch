@@ -21,7 +21,7 @@ function App() {
       setSelectedMovie(null);
       setRawResponse(null);
       try {
-        const results = await searchMovies("Avengers");
+        const results = await searchMovies("Marvel");
         setMovies(results);
         setRawResponse(results);
       } catch (err) {
