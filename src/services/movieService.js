@@ -28,6 +28,31 @@ export const searchMovies = async (query) => {
   }
 };
 
+export const getPopularMovies = async () => {
+  try {
+    const url = `${TMDB_BASE_URL}/movie/popular?api_key=${TMDB_API_KEY}`;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+    const data = await response.json();
+    if (Array.isArray(data.results)) {
+      // Map TMDb results to OMDb-like format for compatibility
+      return data.results.map((movie) => ({
+        imdbID: movie.id,
+        Title: movie.title,
+        Year: movie.release_date ? movie.release_date.slice(0, 4) : "",
+        Poster: movie.poster_path
+          ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+          : "/placeholder-poster.jpg",
+      }));
+    } else {
+      return [];
+    }
+  } catch (error) {
+    console.error("Error fetching popular movies:", error);
+    return [];
+  }
+};
+
 export const getMovieDetails = async (id) => {
   try {
     const url = `${TMDB_BASE_URL}/movie/${id}?api_key=${TMDB_API_KEY}`;
