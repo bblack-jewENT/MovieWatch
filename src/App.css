@@ -1,16 +1,16 @@
 /* Footer Styles */
 .footer {
-  background: var(--background-color);
-  max-width: 1500px;
+  /* background: var(--background-color); */
+  width: 100%;
   color: var(--text-color);
   padding: 2rem 0 1rem 0;
   margin-top: 2rem;
-  box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.08); */
 }
 
 .footer-content {
   max-width: 900px;
-  margin: 0 auto;
+  margin: 25px auto;
   text-align: center;
   display: flex;
   /* flex-direction: column; */
@@ -49,6 +49,13 @@
   font-size: 0.95rem;
   margin: 0.5rem 0 0 0;
 }
+
+.separator-line {
+  border-top: 1px solid #ccc; /* 1px solid gray line at the top */
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
 :root {
   --primary-color: #127c52; /* light green */
   --text-color: #ffffff;
@@ -60,7 +67,7 @@
 .navbar {
   display: flex;
   align-items: center;
-  gap: 19rem;
+  gap: 23rem;
   padding: 0.75rem 1rem;
   margin-bottom: 2rem;
   color: var(--text-color);
@@ -126,6 +133,7 @@
   align-items: center;
   gap: 0.5rem;
   background: transparent;
+  flex-direction: row-reverse;
 }
 
 .search-input {
@@ -204,13 +212,18 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
+  min-height: 200px;
+  width: 100%;
 }
 
-.movie-list-wrapper {
+/* .movie-list-wrapper {
   max-width: 1000px;
   margin: 0 auto;
   padding: 1rem 0;
-}
+  background: #222;
+  border: 2px dashed #127c52;
+  min-height: 300px;
+} */
 
 .movie-list-empty {
   text-align: center;
