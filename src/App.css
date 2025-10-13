@@ -133,7 +133,6 @@
   align-items: center;
   gap: 0.5rem;
   background: transparent;
-  flex-direction: row-reverse;
 }
 
 .search-input {
