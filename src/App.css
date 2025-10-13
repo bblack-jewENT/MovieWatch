@@ -206,6 +206,12 @@
   gap: 1rem;
 }
 
+.movie-list-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
 .movie-list-empty {
   text-align: center;
   padding: 2rem;
@@ -337,4 +343,12 @@
   .movie-list {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
+}
+
+.navbar-right.search-open .main-nav,
+.navbar-right.search-open .sign-in-button {
+  opacity: 0.3;
+  pointer-events: none;
+  transform: scale(0.95);
+  transition: opacity 0.2s, transform 0.2s;
 }
