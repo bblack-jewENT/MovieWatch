@@ -94,7 +94,19 @@
   text-decoration: none;
   margin: 0 0.5rem;
   font-weight: 500;
-  transition: 0.5s ease-in-out;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease-in-out;
 }
 
 .clipper-cut-emoji:hover {
@@ -102,9 +114,8 @@
   cursor: pointer;
 }
 
-.main-nav a:hover {
-  text-decoration: underline 3px var(--primary-color);
-  transition: 0.1s ease-in-out;
+.main-nav a:hover::after {
+  width: 100%;
 }
 
 .sign-in-button {
