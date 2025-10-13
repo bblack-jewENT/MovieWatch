@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import SignInModal from "./SignInModal";
 
-function NavBar({ onSearch }) {
+function NavBar({ onSearch, onNavigate }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSignInClick = () => {
@@ -26,8 +26,24 @@ function NavBar({ onSearch }) {
 
         <div className="navbar-right">
           <nav className="main-nav">
-            <a href="#">Home</a>
-            <a href="#">Movies</a>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate("home");
+              }}
+            >
+              Home
+            </a>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate("movies");
+              }}
+            >
+              Movies
+            </a>
             <a href="#">Coming</a>
           </nav>
 
