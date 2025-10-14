@@ -67,6 +67,7 @@
   --text-color: #ffffff;
   --background-color: #1f2937; /* dark gray */
   --muted: #9ca3af;
+  --refresh-hover-color: #02130c; /* dark green for refresh button hover */
 }
 
 /* Navbar layout */
@@ -506,6 +507,23 @@
 .modal-content h2 {
   margin-top: 0;
   margin-bottom: 1rem;
+}
+
+.refresh-button {
+  transition: background-color 0.3s ease-in-out;
+}
+
+.refresh-button:hover {
+  background-color: var(--refresh-hover-color);
+}
+
+.refresh-button:focus {
+  outline: 2px solid rgba(110, 231, 183, 0.25);
+  outline-offset: 2px;
+}
+
+.refresh-button:active {
+  opacity: 0.5;
 }
 
 .form-group {
