@@ -92,7 +92,6 @@ function App() {
       <NavBar onSearch={handleSearch} onNavigate={handleNavigate} />
       {currentPage === "home" && (
         <>
-          <div className="separator-line-nav"></div>
           <main className="main-content">
             {loading && <div className="loading">Loading...</div>}
             {error && <div className="error">{error}</div>}
