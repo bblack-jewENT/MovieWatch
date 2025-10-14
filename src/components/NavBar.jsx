@@ -1,9 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
 import SignInModal from "./SignInModal";
 
 function NavBar({ onSearch, onNavigate }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   const handleSignInClick = () => {
     setIsModalOpen(true);
@@ -15,7 +32,9 @@ function NavBar({ onSearch, onNavigate }) {
 
   return (
     <>
-      <header className="navbar">
+      <header
+        className={`navbar ${isVisible ? "navbar-visible" : "navbar-hidden"}`}
+      >
         <div className="navbar-left">
           <h1 className="brand">
             <span className="clipper-cut-emoji">🎬</span> Movie Watch
