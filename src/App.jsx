@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";
 import MoviesPage from "./components/MoviesPage";
+import ComingSoonPage from "./components/ComingSoonPage";
 import Footer from "./components/Footer";
 import {
   searchMovies,
@@ -113,6 +114,7 @@ function App() {
       {currentPage === "movies" && (
         <MoviesPage onSelectMovie={handleSelectMovie} />
       )}
+      {currentPage === "coming" && <ComingSoonPage />}
       <div className="separator-line-footer"></div>
       <Footer />
     </>
