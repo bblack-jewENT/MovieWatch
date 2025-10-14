@@ -63,7 +63,15 @@ function NavBar({ onSearch, onNavigate }) {
             >
               Movies
             </a>
-            <a href="#">Coming</a>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate("coming");
+              }}
+            >
+              Coming
+            </a>
           </nav>
 
           <SearchBar onSearch={onSearch} />
