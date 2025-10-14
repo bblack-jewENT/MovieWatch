@@ -5,7 +5,20 @@ function MovieList({ movies, onSelectMovie }) {
   if (!movies || movies.length === 0) {
     return (
       <div className="movie-list-empty">
-        No movies found. Try a different search.
+        <div className="no-movies-animation">
+          <div className="popcorn-spill">
+            <span>🍿</span>
+            <span>🎬</span>
+            <span>🍿</span>
+          </div>
+          <h3>Oops! Sorry</h3>
+          <p>No movies found with posters. Try a different search!</p>
+          <div className="film-reel">
+            <div className="reel-hole"></div>
+            <div className="reel-hole"></div>
+            <div className="reel-hole"></div>
+          </div>
+        </div>
       </div>
     );
   }

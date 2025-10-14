@@ -11,14 +11,15 @@ export const searchMovies = async (query) => {
     const data = await response.json();
     if (Array.isArray(data.results)) {
       // Map TMDb results to OMDb-like format for compatibility
-      return data.results.map((movie) => ({
-        imdbID: movie.id,
-        Title: movie.title,
-        Year: movie.release_date ? movie.release_date.slice(0, 4) : "",
-        Poster: movie.poster_path
-          ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-          : "/placeholder-poster.jpg",
-      }));
+      // Filter out movies without posters
+      return data.results
+        .filter((movie) => movie.poster_path)
+        .map((movie) => ({
+          imdbID: movie.id,
+          Title: movie.title,
+          Year: movie.release_date ? movie.release_date.slice(0, 4) : "",
+          Poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+        }));
     } else {
       return [];
     }
