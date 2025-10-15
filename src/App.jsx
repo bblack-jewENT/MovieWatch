@@ -19,6 +19,7 @@ function App() {
   const [error, setError] = useState(null);
   const [rawResponse, setRawResponse] = useState(null);
   const [currentPage, setCurrentPage] = useState("home");
+  const [hasSearched, setHasSearched] = useState(false);
 
   // Fetch default movies on initial load
   useEffect(() => {
@@ -47,6 +48,7 @@ function App() {
     setError(null);
     setSelectedMovie(null);
     setRawResponse(null);
+    setHasSearched(true);
     try {
       const results = await searchMovies(term);
       setMovies(results);
@@ -92,24 +94,35 @@ function App() {
     <>
       <NavBar onSearch={handleSearch} onNavigate={handleNavigate} />
       {currentPage === "home" && (
-        <>
-          <main className="main-content">
-            {loading && <div className="loading">Loading...</div>}
-            {error && <div className="error">{error}</div>}
-            {selectedMovie ? (
-              <MovieDetails movie={selectedMovie} onBack={handleBack} />
-            ) : (
-              <>
-                <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
-                {(!movies || movies.length === 0) && rawResponse && (
-                  <pre className="api-debug">
-                    {JSON.stringify(rawResponse, null, 2)}
-                  </pre>
-                )}
-              </>
-            )}
-          </main>
-        </>
+        <main className="main-content">
+          {loading ? (
+            <div className="loading">
+              <div className="loading-animation">
+                <div className="film-reel">
+                  <div className="reel-hole"></div>
+                  <div className="reel-hole"></div>
+                  <div className="reel-hole"></div>
+                </div>
+              </div>
+              <div style={{ marginTop: "1rem", fontSize: "1.2rem" }}>
+                Loading movies...
+              </div>
+            </div>
+          ) : hasSearched && error ? (
+            <div className="error">{error}</div>
+          ) : selectedMovie ? (
+            <MovieDetails movie={selectedMovie} onBack={handleBack} />
+          ) : (
+            <>
+              <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
+              {(!movies || movies.length === 0) && rawResponse && (
+                <pre className="api-debug">
+                  {JSON.stringify(rawResponse, null, 2)}
+                </pre>
+              )}
+            </>
+          )}
+        </main>
       )}
       {currentPage === "movies" && (
         <>
