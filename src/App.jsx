@@ -1,11 +1,14 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "./firebase";
 import NavBar from "./components/NavBar";
 import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";
 import MoviesPage from "./components/MoviesPage";
 import ComingSoonPage from "./components/ComingSoonPage";
 import Footer from "./components/Footer";
+import SignInModal from "./components/SignInModal";
 import {
   searchMovies,
   getMovieDetails,
@@ -19,7 +22,17 @@ function App() {
   const [error, setError] = useState(null);
   const [rawResponse, setRawResponse] = useState(null);
   const [currentPage, setCurrentPage] = useState("home");
+  const [user, setUser] = useState(null);
+  const [showSignInModal, setShowSignInModal] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+
+  // Listen for authentication state changes
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
 
   // Fetch default movies on initial load
   useEffect(() => {
@@ -90,9 +103,33 @@ function App() {
     }
   };
 
+  const handleSignInClick = () => {
+    setShowSignInModal(true);
+  };
+
+  const handleAuthSuccess = (user) => {
+    setUser(user);
+    setShowSignInModal(false);
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      setUser(null);
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+
   return (
     <>
-      <NavBar onSearch={handleSearch} onNavigate={handleNavigate} />
+      <NavBar
+        onSearch={handleSearch}
+        onNavigate={handleNavigate}
+        user={user}
+        onSignInClick={handleSignInClick}
+        onSignOut={handleSignOut}
+      />
       {currentPage === "home" && (
         <main className="main-content">
           {loading ? (
@@ -136,6 +173,11 @@ function App() {
       {currentPage === "coming" && <ComingSoonPage />}
       <div className="separator-line-footer"></div>
       <Footer />
+      <SignInModal
+        isOpen={showSignInModal}
+        onClose={() => setShowSignInModal(false)}
+        onAuthSuccess={handleAuthSuccess}
+      />
     </>
   );
 }

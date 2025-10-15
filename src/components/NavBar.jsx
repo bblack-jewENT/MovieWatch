@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
-import SignInModal from "./SignInModal";
 
-function NavBar({ onSearch, onNavigate }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+function NavBar({ onSearch, onNavigate, user, onSignInClick, onSignOut }) {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -23,11 +21,7 @@ function NavBar({ onSearch, onNavigate }) {
   }, [lastScrollY]);
 
   const handleSignInClick = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+    onSignInClick();
   };
 
   return (
@@ -76,12 +70,22 @@ function NavBar({ onSearch, onNavigate }) {
 
           <SearchBar onSearch={onSearch} />
 
-          <button className="sign-in-button" onClick={handleSignInClick}>
-            Sign in
-          </button>
+          {user ? (
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+              <span style={{ color: "var(--text-color)", fontSize: "0.9rem" }}>
+                Welcome, {user.email}
+              </span>
+              <button className="sign-in-button" onClick={onSignOut}>
+                Sign Out
+              </button>
+            </div>
+          ) : (
+            <button className="sign-in-button" onClick={handleSignInClick}>
+              Sign In
+            </button>
+          )}
         </div>
       </header>
-      <SignInModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </>
   );
 }
