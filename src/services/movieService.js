@@ -61,6 +61,21 @@ export const getMovieDetails = async (id) => {
     const response = await fetch(url);
     if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
     const data = await response.json();
+
+    // Fetch videos for the movie
+    const videosUrl = `${TMDB_BASE_URL}/movie/${id}/videos?api_key=${TMDB_API_KEY}`;
+    const videosResponse = await fetch(videosUrl);
+    let trailerKey = null;
+    if (videosResponse.ok) {
+      const videosData = await videosResponse.json();
+      const youtubeTrailer = videosData.results.find(
+        (video) => video.site === "YouTube" && video.type === "Trailer"
+      );
+      if (youtubeTrailer) {
+        trailerKey = youtubeTrailer.key;
+      }
+    }
+
     // Map TMDb details to OMDb-like format for compatibility
     return {
       imdbID: data.id,
@@ -73,6 +88,7 @@ export const getMovieDetails = async (id) => {
       Genre: data.genres ? data.genres.map((g) => g.name).join(", ") : "",
       Rating: data.vote_average,
       Runtime: data.runtime,
+      Trailer: trailerKey,
       ...data,
     };
   } catch (error) {
