@@ -1,5 +1,11 @@
 import React from "react";
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaInstagram,
+  FaEnvelope,
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -41,6 +47,12 @@ const Footer = () => {
             rel="noopener noreferrer"
           >
             <FaInstagram size={24} />
+          </a>
+          <a
+            href="mailto:mrswartz4@icloud.com"
+            aria-label="Contact Email"
+          >
+            <FaEnvelope size={24} />
           </a>
         </nav>
       </div>
