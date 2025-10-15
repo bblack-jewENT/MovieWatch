@@ -401,9 +401,9 @@
   padding: 0.5rem 1rem;
   border-radius: 6px;
   cursor: pointer;
-  margin-top: 1rem;
   margin-bottom: 1rem;
   font-size: 1rem;
+  margin-top: 7rem;
 }
 
 .back-button:hover {
