@@ -112,7 +112,13 @@ function App() {
         </>
       )}
       {currentPage === "movies" && (
-        <MoviesPage onSelectMovie={handleSelectMovie} />
+        <>
+          {selectedMovie ? (
+            <MovieDetails movie={selectedMovie} onBack={handleBack} />
+          ) : (
+            <MoviesPage onSelectMovie={handleSelectMovie} />
+          )}
+        </>
       )}
       {currentPage === "coming" && <ComingSoonPage />}
       <div className="separator-line-footer"></div>
