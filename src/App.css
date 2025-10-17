@@ -8,12 +8,13 @@
     max-width: 98vw;
   }
   .footer-nav {
-    gap: 1.2rem;
+    gap: 1rem;
+    margin-right: 10px;
     flex-wrap: wrap;
     justify-content: center;
   }
   .footer-nav a {
-    font-size: 1.1rem;
+    font-size: 1rem;
     gap: 0.3rem;
   }
   .footer .brand {
@@ -21,7 +22,7 @@
     margin-bottom: 0.2rem;
   }
   .footer p {
-    font-size: 0.8rem;
+    font-size: 0.5rem;
     margin-top: 0.2rem;
     text-align: center;
   }
@@ -33,6 +34,20 @@
 /* Hamburger menu styles */
 .hamburger-menu {
   display: none;
+}
+
+@media (min-width: 901px) {
+  .footer-nav {
+    gap: 1rem;
+    margin-right: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .footer p {
+    font-size: 0.5rem;
+    margin-top: 0.2rem;
+    text-align: center;
+  }
 }
 
 @media (max-width: 970px) {
@@ -342,12 +357,6 @@
 .separator-line-footer {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin: 20px 0 20px 0;
-  width: 103.7%;
-}
-
-.separator-line-nav {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: 35px;
   width: 103.7%;
 }
 
@@ -669,6 +678,7 @@
 .main-content {
   padding: 1rem;
   max-width: 1200px;
+  justify-content: center;
   margin: 0 auto;
   padding-top: 6rem; /* Account for fixed navbar height */
 }
@@ -723,10 +733,28 @@
 /* Movie List */
 .movie-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   min-height: 200px;
   width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .movie-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .movie-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .movie-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* .movie-list-wrapper {
@@ -876,6 +904,7 @@
 .movie-details {
   max-width: 800px;
   margin: 0 auto;
+  margin-left: 15px;
 }
 
 .back-button {

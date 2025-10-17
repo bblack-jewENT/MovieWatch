@@ -13,6 +13,7 @@ function ComingSoonPage() {
           minHeight: "60vh",
           textAlign: "center",
           padding: "2rem",
+          marginLeft: "20px",
         }}
       >
         <div

@@ -12,7 +12,7 @@ function MovieDetails({ movie, onBack }) {
       <button className="back-button" onClick={onBack}>
         ← Back to Search
       </button>
-      <div className="movie-details-content">
+      <div className="movie-details-content" style={{ marginLeft: "auto" }}>
         <div
           className="movie-details-poster-container"
           style={{ position: "relative", width: "200px", height: "300px" }}
