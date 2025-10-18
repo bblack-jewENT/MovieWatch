@@ -41,7 +41,7 @@ const Footer = () => {
             <FaTwitter size={24} />
           </a>
           <a
-            href="https://www.instagram.com/mo.ses_themessiah/"
+            href="https://www.instagram.com/bblack_jewentj/"
             aria-label="Instagram"
             target="_blank"
             rel="noopener noreferrer"
