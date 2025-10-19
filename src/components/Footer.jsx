@@ -48,10 +48,7 @@ const Footer = () => {
           >
             <FaInstagram size={24} />
           </a>
-          <a
-            href="mailto:mrswartz4@icloud.com"
-            aria-label="Contact Email"
-          >
+          <a href="mailto:mrswartz4@icloud.com" aria-label="Contact Email">
             <FaEnvelope size={24} />
           </a>
         </nav>
