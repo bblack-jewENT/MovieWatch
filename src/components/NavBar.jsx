@@ -163,16 +163,6 @@ function NavBar({ onSearch, onNavigate, user, onSignInClick, onSignOut }) {
         <SearchBar onSearch={onSearch} />
         {user ? (
           <div className="user-info-circle">
-            <span
-              style={{
-                color: "var(--text-color)",
-                fontSize: "0.98rem",
-                fontWeight: 500,
-                marginRight: "0.35rem",
-              }}
-            >
-              Welcome,
-            </span>
             <span title={user.email}>
               {user.email.slice(0, 2).toUpperCase()}
             </span>
