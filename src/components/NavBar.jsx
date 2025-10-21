@@ -81,7 +81,7 @@ function NavBar({ onSearch, onNavigate, user, onSignInClick, onSignOut }) {
                   ? "rotate(45deg) translate(4px, 4px)"
                   : "none",
               }}
-            />
+            ></span>
             <span
               style={{
                 position: "absolute",
@@ -94,7 +94,7 @@ function NavBar({ onSearch, onNavigate, user, onSignInClick, onSignOut }) {
                 opacity: menuOpen ? 0 : 1,
                 transition: "0.3s",
               }}
-            />
+            ></span>
             <span
               style={{
                 position: "absolute",
@@ -109,7 +109,7 @@ function NavBar({ onSearch, onNavigate, user, onSignInClick, onSignOut }) {
                   ? "rotate(-45deg) translate(4px, -4px)"
                   : "none",
               }}
-            />
+            ></span>
           </span>
         </button>
         {/* Nav links, show/hide for mobile */}
