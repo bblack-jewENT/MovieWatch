@@ -36,7 +36,7 @@ function NavBar({ onSearch, onNavigate, user, onSignInClick, onSignOut }) {
       className={`navbar ${isVisible ? "navbar-visible" : "navbar-hidden"}`}
     >
       <div className="navbar-content-centered">
-        <h1 className="brand" style={{ fontSize: "40px" }}>
+        <h1 className="brand" style={{ fontSize: "40px", marginRight: "4rem" }}>
           <span className="clipper-cut-emoji" size={55}>
             🎬
           </span>{" "}
@@ -53,7 +53,7 @@ function NavBar({ onSearch, onNavigate, user, onSignInClick, onSignOut }) {
             background: "none",
             border: "none",
             cursor: "pointer",
-            marginLeft: "0.5rem",
+            marginRight: "4rem",
             padding: 0,
             alignItems: "center",
             justifyContent: "center",
