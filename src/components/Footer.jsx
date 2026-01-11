@@ -14,7 +14,7 @@ const Footer = () => {
         <h1 className="brand">
           <span className="clipper-cut-emoji">🎬</span> Movie Watch
         </h1>
-        <p>&copy; 2025 MovieWatch | bblackjew ENTj. All rights reserved.</p>
+        <p>&copy; 2026 MovieWatch | bblackjew ENTj. All rights reserved.</p>
         <nav className="footer-nav">
           <a
             href="https://github.com/bblack-jewENT"
